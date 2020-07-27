@@ -1,6 +1,6 @@
 package com;
 
-//https://leetcode.com/problems/can-place-flowers/solution/
+//https://leetcode.com/problems/can-place-flowers/
 
 public class Flowerbed {
 /*	public static boolean canPlaceFlowers(int[] arr, int n) {

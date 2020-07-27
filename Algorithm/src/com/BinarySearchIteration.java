@@ -24,11 +24,9 @@ public class BinarySearchIteration {
 	public static int search(int[] arr, int l, int r, int x) {
 		while(l<=r) {
 			int m = (l+r)/2;
-			if(x== arr[m]) return m;
-			if(x>arr[m]) l = m+1;
-			else {
-				r = m-1;
-			}
+			if(arr[m] == x) return m;
+			if(x > arr[m]) l = m+1;
+			else r = m-1;
 		}
 		return -1;
 	}

@@ -32,11 +32,11 @@ public class QuickSort {
 		return i + 1;
 	}*/
 	
-	public static void quickSort(int[] arr, int l, int r) {
+	public static void quickSort(int[]arr, int l, int r) {
 		if(l<r) {
 			int pivot = partition(arr, l, r);
 			quickSort(arr, l, pivot - 1);
-			quickSort(arr, pivot+1, r);
+			quickSort(arr, pivot + 1, r);
 		}
 	}
 	public static int partition(int[] arr, int l, int r) {
@@ -45,9 +45,9 @@ public class QuickSort {
 		for(int i=l; i<r; i++) {
 			if(arr[i] <= pivot) {
 				j++;
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+				int temp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = temp;
 			}
 		}
 		j++;
@@ -56,7 +56,6 @@ public class QuickSort {
 		arr[j] = temp;
 		return j;
 	}
-	
 	
 	
 	public static void main(String[] args) {

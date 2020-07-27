@@ -59,6 +59,7 @@ public class InsertDeleteGetRandomO1 {
 		return idxMap.get(idx);
 	}*/
 	
+	//https://leetcode.com/problems/insert-delete-getrandom-o1/
 	HashMap<Integer,Integer> valueMap;
 	HashMap<Integer,Integer> indexMap;
 	InsertDeleteGetRandomO1(){
@@ -96,6 +97,7 @@ public class InsertDeleteGetRandomO1 {
 		return indexMap.get(r);
 	}
 
+	//https://leetcode.com/problems/insert-delete-getrandom-o1/
 	public static void main(String[] args) {
 		InsertDeleteGetRandomO1 ob = new InsertDeleteGetRandomO1();
 		ob.insert(123);

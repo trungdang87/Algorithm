@@ -85,16 +85,16 @@ public class DepthFirstSearch{
 	}
 	public void dfs(int s) {
 		boolean[] visited = new boolean[this.v];
-		dfsUtil(visited, s);
+		dfsUtil(s, visited);
 	}
-	public void dfsUtil(boolean[] visited, int  s) {
+	public void dfsUtil(int s, boolean[] visited) {
 		visited[s] = true;
 		System.out.print(s + " ");
 		Iterator<Integer> i = adj[s].iterator();
 		while(i.hasNext()) {
-			s = i.next();
+			s=i.next();
 			if(!visited[s]) {
-				dfsUtil(visited, s);
+				dfsUtil(s, visited);
 			}
 		}
 	}

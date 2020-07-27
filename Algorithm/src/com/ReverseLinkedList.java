@@ -134,17 +134,14 @@ class Node{
 	public static void printReverse(Node head) {
 		if(head==null) return;
 		printReverse(head.next);
-		System.out.print( head.data + " ");
+		System.out.print(head.data + " ");
 	}
 	
 	//reverseIterator
 	public static Node reverseIterator(Node head) {
-		if(head==null || head.next==null) {
-			return head;
-		}
-		Node pre = null;
-		Node cur = head;
+		if(head==null || head.next==null);
 		Node next = null;
+		Node cur = head, pre = null;
 		while(cur!=null) {
 			next = cur.next;
 			cur.next = pre;
@@ -164,9 +161,12 @@ class Node{
 		return rest;
 	}
 	
+	
 	//middleOfLinkedList
 	public static Node middleOfLinkedList(Node head) {
-		Node slow = head, fast = head;
+		if(head==null || head.next==null) return head;
+		Node fast = head;
+		Node slow = head;
 		while(fast!=null && fast.next!=null) {
 			slow = slow.next;
 			fast = fast.next.next;

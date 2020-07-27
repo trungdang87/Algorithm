@@ -29,15 +29,15 @@ public class KClosestPointToOrigin {
 
 	}*/
 	
-	public static int[][] kClosest(int[][] arr, int k){
-		int[][] result = new int[k][2];
-		Map<int[], Integer> map = new HashMap();
-		for(int[] i : arr) {
-			int distance = i[0]*i[0] + i[1]*i[1];
-			map.put(i, distance);
+	public static int[][] kClosest(int[][] points, int k){
+		Map<int[], Integer> map = new HashMap<>();
+		for(int[] i : points) {
+			int distance = i[0]*i[0] +i[1]*i[1];
+			map.put(i,  distance);
 		}
-		PriorityQueue<Map.Entry<int[], Integer>> pq = new PriorityQueue<>((a,b)->a.getValue()-b.getValue());
+		PriorityQueue<Map.Entry<int[], Integer>> pq = new PriorityQueue<>((a,b)->a.getValue() - b.getValue());
 		pq.addAll(map.entrySet());
+		int[][] result = new int[k][2];
 		for(int i=0; i<k; i++) {
 			result[i] = pq.poll().getKey();
 		}

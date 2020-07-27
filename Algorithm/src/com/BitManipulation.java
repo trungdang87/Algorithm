@@ -46,12 +46,10 @@ public class BitManipulation{
 	//updateBits nnnnjmmmminnnn (n, m, i, j)
 	public static int updateBits(int n, int m, int i, int j) {
 		int max = ~0;
-		int left = max -  ((1<<j) - 1);
+		int left = max - ((1<<j) - 1);
 		int right = (1<<i) - 1;
-		int mask = left | right;
-		int getNBits = n&mask;
-		int getMBits = m<<i;
-		return getNBits | getMBits;
+		int temp = left | right;
+		return (n&temp) | (m<<i);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,11 +68,11 @@ public class BitManipulation{
 	}*/
 	//bitSwapRequired
 	public static int bitSwapRequired(int a, int b) {
-		int diffBits = a ^ b;
+		int diff = a^b;
 		int count = 0;
-		while(diffBits!=0) {
-			count += diffBits & 1;
-			diffBits = diffBits >> 1;
+		while(diff!=0) {
+			count = count + (diff&1);
+			diff = diff >> 1;
 		}
 		return count;
 	}
@@ -103,11 +101,11 @@ public class BitManipulation{
 	}*/
 	//swapOddEvenBits
 	public static int swapOddEvenBits(int n) {
-		int even = n & 0xaaaaaaaa;
-		int odd = n & 0x55555555;
+		int odd = n&0x55555555;
+		int even = n&0xaaaaaaaa;
+		odd = odd <<1;
 		even = even >> 1;
-		odd = odd << 1;
-		return even | odd;
+		return odd | even;
 	}
 	
 	
@@ -138,9 +136,9 @@ public class BitManipulation{
 		while(n!=0) {
 			if((n&1)==0) {
 				count++;
-				max = Math.max(max,  count);
 			}
 			else {
+				max = Math.max(max,  count);
 				count = 0;
 			}
 			n >>= 1;

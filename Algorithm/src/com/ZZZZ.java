@@ -10,76 +10,81 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-class A{
-	public static void print() {
-		System.out.println("AAAAAA");
-	}
-}
-class B extends A{
-	public static void print() {
-		System.out.println("BBBBBBBB");
-	}
-}
-class C extends A{
-	public static void print() {
-		System.out.println("CCCCCCCCCCCCC");
-	}
-}
 
 
 public class ZZZZ {
-	public static String solution(String s) {
-		char[] chars = s.toCharArray();
-		HashSet<Character> set = new HashSet();
-		for(Character c : chars){
-			set.add(c);
-		}
+	int cur = Integer.MAX_VALUE;
+    int min = Integer.MAX_VALUE;
+    //this works but "time limit exceeded"
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+        List<List<String>> result = new ArrayList<>();
+        List<String> list = new ArrayList<>();
+        list.add(beginWord);
+        wordList.remove(beginWord);
+        System.out.println(wordList.toString() + "@@@@@@@@@@");
+        helper(beginWord, endWord,list, wordList, result);
 
-		PriorityQueue<Character> pq = new PriorityQueue<>((a,b) -> b-a);
-		pq.addAll(set);
-		StringBuilder sb = new StringBuilder();
-		for(Character c : pq) {
-			sb.append(c);
-		}
-		return sb.toString();
-	}
-
-	public static int removeDuplicates(int[] nums) {
-		if (nums.length == 0) return 0;
-		int i = 0;
-		for (int j = 1; j < nums.length; j++) {
-			if (nums[j] != nums[i]) {
-				i++;
-				nums[i] = nums[j];
-			}
-		}
-		return i + 1;
-	}
-
+        List<List<String>> result2 = new ArrayList<>();
+        
+        System.out.println("WTFWTF " + result.toString());
+        System.out.println("MIN MIN " + min);
+        for(List<String> l : result){
+            if(min== Integer.MAX_VALUE || l.size() == min){
+                result2.add(new ArrayList<>(l));
+            }
+        }
+        
+        
+        return result2;
+    }
+    public void helper(String b, String e, List<String> list, List<String> wordList, List<List<String>> result){
+        if(list.get(list.size() - 1).equals(e)){
+        	System.out.println("RRRRRRRR " + list.toString());
+            cur = list.size();
+            System.out.println("RRRRRRRR " + result.toString());
+            if(!result.isEmpty() && result.get(result.size() - 1).size() > cur){
+                min = Math.min(cur, result.get(result.size() - 1).size());
+                result.add(new ArrayList<>(list));
+                return;
+            }
+            result.add(new ArrayList<>(list));
+            System.out.println("RRRRRRRR " + result.toString());
+            return;
+        }
+        
+        for(String s : wordList){
+            if(isSafe(list.get(list.size() - 1), s)){
+            	System.out.println(list.toString());
+                List<String> remainWords = new ArrayList<>(wordList);
+                remainWords.remove(s);
+                list.add(s);
+                helper(s, e, list, remainWords, result);
+                
+                list.remove(list.size() - 1);
+            }
+            
+        }
+    }
+    public boolean isSafe(String a, String b){
+        int count = 0;
+        for(int i=0; i<a.length(); i++){
+            if(a.charAt(i) == b.charAt(i)) continue;
+            count++;
+        }
+        return count==1;
+    }
 
 	public static void main(String args[]){  
-		String s1=new String("hello");  
-		String s2="hello";  
-		String s3=s1.intern();//returns string from pool, now it will be same as s2  
-		String s4 = s2.intern();
-		System.out.println(s1==s2);//false because reference variables are pointing to different instance  
-		System.out.println(s2==s3);//true because reference variables are pointing to same instance  
-		System.out.println(s4==s2);
-		System.out.println(ZZZZ.solution("cbacdcbc"));
-		final ArrayList<Integer> list = new ArrayList();
-		list.add(123);
-
-		Integer[] a = new Integer[] { 1,2,3,4 }; 
-
-		// getting the list view of Array 
-		List<Integer> list1 = Arrays.asList(a); 
-
-		// printing the list 
-		System.out.println("The list is: " + list1); 
-		int[] wtf = {0,0,1,1,1,2,2,3,3,4};
-		removeDuplicates(wtf);
-		System.out.println(Arrays.toString(wtf));
-
+		ZZZZ ob = new ZZZZ();
+		List<String> wordList = new ArrayList<>();
+		wordList.add("hot");
+		wordList.add("dog");
+		wordList.add("dot");
+		List<List<String>> result = ob.findLadders("hot", "dog", wordList);
+		for(List<String> l : result) {
+			System.out.println(l.toString());
+		}
+		
 	}
 
 }

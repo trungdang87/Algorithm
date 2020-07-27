@@ -82,8 +82,8 @@ public class RemoveDuplicateAdvance {
     }*/
 
 	public static String remove(String s) {
-		Set<Character> set = new HashSet<>();
 		char[] chars = s.toCharArray();
+		Set<Character> set = new HashSet<>();
 		StringBuilder sb = new StringBuilder();
 		for(Character c : chars) {
 			if(!set.contains(c)) {
@@ -93,6 +93,7 @@ public class RemoveDuplicateAdvance {
 			set.add(Character.toUpperCase(c));
 		}
 		return sb.toString();
+		
 	}
 
 	public static void main(String[] args) {

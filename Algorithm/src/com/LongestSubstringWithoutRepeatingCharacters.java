@@ -18,7 +18,7 @@ Space complexity (Table): O(m)O(m). mm is the size of the charset.*/
 	
 	
 	
-	//https://leetcode.com/problems/longest-substring-without-repeating-characters/solution/
+	//https://leetcode.com/problems/longest-substring-without-repeating-characters/
 	//Given a string, find the length of the longest substring 
 	//without repeating characters.
 /*    public static int find(String s) {
@@ -36,7 +36,8 @@ Space complexity (Table): O(m)O(m). mm is the size of the charset.*/
     }*/
 	
 	//[i,j) if encounter repeated char, i move to index of repeated char + 1
-
+	
+	//https://leetcode.com/problems/longest-substring-without-repeating-characters/
 	public static int find(String s) {
 		Map<Character, Integer> map = new HashMap<>();
 		int max = 0;
@@ -52,22 +53,25 @@ Space complexity (Table): O(m)O(m). mm is the size of the charset.*/
 	}
 	
 	public static String lookup(String s) {
-		Map<Character, Integer> map = new HashMap<>();
 		int max = 0;
-		int start = 0, end = 0;
+		int start=0, end = 0;
+		char c = ' ';
+		Map<Character, Integer> map = new HashMap<>();
 		for(int i=0, j=0; j<s.length(); j++) {
-			char c = s.charAt(j);
+			c = s.charAt(j);
 			if(map.containsKey(c)) {
 				i = Math.max(i, map.get(c));
 			}
-			map.put(c, j+1);
-			if(j - i + 1 > max) {
+			if(j-i+1 > max) {
 				start = i;
 				end = j;
-				max = Math.max(max,  j - i + 1);
+				max = Math.max(max, j - i + 1);
 			}
+			
+			map.put(c, j+1);
+			
 		}
-		return s.substring(start,end+1);
+		return s.substring(start, end + 1);
 	}
 	public static void main(String[] args) {
 		System.out.println(LongestSubstringWithoutRepeatingCharacters.find("abcabcbb"));//3 The answer is "abc", with the length of 3. 

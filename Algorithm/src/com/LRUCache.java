@@ -163,7 +163,7 @@ public class LRUCache {
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@	
 	
-	//https://leetcode.com/problems/lru-cache/submissions/
+	//https://leetcode.com/problems/lru-cache/
 	int size;
 	Deque<Integer> queue;
 	Set<Integer> set;

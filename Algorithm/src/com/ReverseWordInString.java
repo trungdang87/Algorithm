@@ -14,7 +14,7 @@ public class ReverseWordInString {
 	public static String reverse(String s) {
 		String[] strings = s.split("\\s");
 		StringBuilder sb = new StringBuilder();
-		for(int i = strings.length-1; i>=0; i--) {
+		for(int i=strings.length - 1; i>=0; i--) {
 			sb.append(strings[i] + " ");
 		}
 		return sb.toString().trim();

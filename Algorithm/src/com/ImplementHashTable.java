@@ -169,29 +169,30 @@ class HashNode<K,V>{
 	K key;
 	V value;
 	HashNode<K,V> next;
-	HashNode (K key, V value){
+	HashNode(K key, V value){
 		this.key = key;
 		this.value = value;
-		this.next = null;
+		next = null;
 	}
 }
+
 class MyMap<K,V>{
+	ArrayList<HashNode<K,V>> bucketArray;
 	int size;
 	int capacity;
-	ArrayList<HashNode<K,V>> bucketArray;
 	MyMap(){
-		size = 0;
-		capacity = 2;
+		this.size =0;
+		this.capacity = 2;
 		bucketArray = new ArrayList<>();
 		for(int i=0; i<capacity; i++) {
 			bucketArray.add(null);
 		}
 	}
+	public int size() {
+		return this.size;
+	}
 	public boolean isEmpty() {
 		return size==0;
-	}
-	public int size() {
-		return size;
 	}
 	public V remove(K key) {
 		int bucketIndex = bucketIndex(key);
@@ -244,10 +245,10 @@ class MyMap<K,V>{
 		HashNode<K,V> newNode = new HashNode<K,V>(key, value);
 		newNode.next = head;
 		bucketArray.set(bucketIndex, newNode);
-		if(1.0*size/capacity > 0.7) {
-			size = 0;
-			capacity = capacity*2;
+		if(1.0*size / capacity > 0.7) {
 			ArrayList<HashNode<K,V>> temp = bucketArray;
+			size = 0;
+			capacity = capacity * 2;
 			bucketArray = new ArrayList<>();
 			for(int i=0; i<capacity; i++) {
 				bucketArray.add(null);
@@ -255,13 +256,12 @@ class MyMap<K,V>{
 			for(HashNode<K,V> h : temp) {
 				while(h!=null) {
 					put(h.key, h.value);
-					h = h.next;
+					h=h.next;
 				}
 			}
 		}
 	}
 }
-
 
 public class ImplementHashTable{
 

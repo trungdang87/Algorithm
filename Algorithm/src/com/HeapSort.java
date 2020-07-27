@@ -52,7 +52,7 @@ public class HeapSort {
 	}*/
 	
 	public static void heapSort(int[] arr) {
-		int n=arr.length;
+		int n = arr.length;
 		for(int i=n/2-1; i>=0; i--) {
 			heapify(arr, i, n);
 		}
@@ -60,18 +60,17 @@ public class HeapSort {
 			int temp = arr[0];
 			arr[0] = arr[i];
 			arr[i] = temp;
-			
 			heapify(arr, 0, i);
 		}
 	}
 	public static void heapify(int[] arr, int i, int n) {
 		int largest = i;
 		int left = i*2+1;
-		int right = i*2+2;
-		if(left<n && arr[largest] < arr[left]) {
+		int right = i*2 + 2;
+		if(left < n && arr[left] > arr[largest]) {
 			largest = left;
 		}
-		if(right<n && arr[largest] < arr[right]) {
+		if(right <n && arr[right] > arr[largest]) {
 			largest = right;
 		}
 		if(largest != i) {

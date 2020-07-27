@@ -33,38 +33,36 @@ public class FindTheNumberOfIslands {
 		return count;
 	}
 	 */
+	
 	//find number of islands and biggest island
-	public  int[] count(int[][] matrix) {
-		int row = matrix.length;
-		int col = matrix[0].length;
+	public int[] count(int[][] matrix) {
 		int[] result = new int[2];
 		int[] count = new int[1];
-		boolean[][] visited = new boolean[row][col];
-		for(int r=0; r<row; r++) {
-			for(int c=0; c<col; c++) {
-				if(isSafe(matrix, r, c, row, col, visited)) {
+		boolean[][] visited = new boolean[matrix.length][matrix[0].length];
+		for(int i=0; i<matrix.length; i++) {
+			for(int j=0; j<matrix[0].length; j++) {
+				if(isSafe(matrix, i, j, visited)) {
 					count[0] = 0;
 					result[0]++;
-					dfs(matrix, r, c, row, col, visited,count);
-					result[1] = Math.max(result[1], count[0]);
+					dfs(matrix, i, j, visited, count);
+					result[1] = Math.max(result[1],  count[0]);
 				}
 			}
 		}
 		return result;
 	}
-	public void dfs(int[][] matrix, int r, int c, int row, int col, boolean[][] visited, int[] count) {
-		count[0]++;
-		visited[r][c] = true;
-		int[] rows = {0,-1,1,0};
-		int[] cols = {-1,0,0,1};
-		for(int i=0; i<4; i++) {
-			if(isSafe(matrix, r+rows[i], c+cols[i], row, col, visited)) {
-				dfs(matrix, r+rows[i], c+cols[i], row, col, visited, count);
-			}
+	public void dfs(int[][] matrix, int i, int j, boolean[][] visited, int[] count) {
+		if(isSafe(matrix, i, j, visited)) {
+			visited[i][j] = true;
+			count[0]++;
+			dfs(matrix, i-1, j, visited, count);
+			dfs(matrix, i+1, j, visited, count);
+			dfs(matrix, i, j-1, visited, count);
+			dfs(matrix, i, j+1, visited, count);
 		}
 	}
-	public boolean isSafe(int[][] matrix, int r, int c, int row, int col, boolean[][]visited) {
-		return r>=0 && r<row && c>=0 && c<col && !visited[r][c] && matrix[r][c]==1;
+	public boolean isSafe(int[][] matrix, int i, int j, boolean[][] visited) {
+		return i>=0 && i<matrix.length && j>=0 && j<matrix[0].length && matrix[i][j]==1 && !visited[i][j];
 	}
 	
 	

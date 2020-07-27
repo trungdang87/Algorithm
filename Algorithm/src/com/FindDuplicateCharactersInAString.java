@@ -50,20 +50,15 @@ public class FindDuplicateCharactersInAString {
 	}*/
 	
 	public static void find(String s) {
-		char[] chars = s.toCharArray();
 		Map<Character, Integer> map = new HashMap<>();
-		for(char c : chars) {
-			if(map.containsKey(c)) {
-				map.put(c, map.get(c) + 1);
-			}
-			else {
-				map.put(c, 1);
-			}
+		char[] chars = s.toCharArray();
+		for(Character c : chars) {
+			map.put(c, map.getOrDefault(c, 0) + 1);
 		}
 		Set<Map.Entry<Character, Integer>> set = map.entrySet();
-		for(Map.Entry<Character, Integer> i : set) {
-			if(i.getValue()>1) {
-				System.out.printf("%s %d %n", i.getKey(), i.getValue());
+		for(Map.Entry<Character, Integer> m : set) {
+			if(m.getValue() > 1) {
+				System.out.printf( "%s %d %n", m.getKey(), m.getValue());
 			}
 		}
 	}

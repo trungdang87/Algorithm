@@ -22,9 +22,9 @@ public class BinarySearchRecursive {
 	public static int binarySearchRecursive(int[] arr, int l, int r, int x) {
 		if(l<=r) {
 			int m = (l+r)/2;
-			if(x==arr[m]) return m;
-			if(x<arr[m]) return binarySearchRecursive(arr, l, m-1, x);
-			else  return binarySearchRecursive(arr, m+1, r, x);
+			if(arr[m]==x) return m;
+			if(x < arr[m]) return binarySearchRecursive(arr, l, m - 1, x);
+			return binarySearchRecursive(arr, m+1, r, x);
 		}
 		return -1;
 	}
