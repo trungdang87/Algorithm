@@ -6,7 +6,6 @@ public class GetSExpressionBinaryTree {
 	/*
 	 * (B,D) (D,E) (A,B) (C,F) (E,G) (A,C)
 Your Output (stdout)
-With my experience I cannot come up with the solution for this problem in a short time
 Expected OutputDownload
 (A(B(D(E(G))))(C(F)))
 	 * 

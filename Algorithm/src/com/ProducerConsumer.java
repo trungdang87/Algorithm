@@ -148,17 +148,17 @@ public class ProducerConsumer {
 
 public class ProducerConsumer{
 	static class Buffer{
-		Queue<Integer> queue;
-		int size;
-		Buffer(int size){
-			this.size=size;
-			queue=new LinkedList();
+		Queue<Integer> queue = new LinkedList<>();
+		int capacity;
+		Buffer(int capacity){
+			this.capacity = capacity;
 		}
-		public synchronized void add(int data) throws InterruptedException{
-			while(queue.size()==size) {
+		public synchronized void add(int val) throws InterruptedException{
+			while(queue.size()==capacity) {
 				wait();
 			}
-			queue.add(data);
+			queue.add(val);
+			System.out.println("PRODUCE " + val);
 			notifyAll();
 		}
 		public synchronized int take() throws InterruptedException{
@@ -166,38 +166,38 @@ public class ProducerConsumer{
 				wait();
 			}
 			int temp = queue.poll();
+			System.out.println("CONSUME " + temp);
 			notifyAll();
 			return temp;
 		}
 	}
+	
 	public static void main(String[] args) throws InterruptedException {
 		Buffer buffer = new Buffer(2);
 		Thread produceThread = new Thread(()->{
 			try {
-				int data = 0;
+				int val = 0;
 				while(true) {
-					Thread.sleep(1000);
-					buffer.add(data);
-					System.out.println("PRODUCE " + data);
-					data++;
-				}
-			}
-			catch(InterruptedException e) {};
-		});
-		Thread consumeThread = new Thread(()->{
-			try {
-				while(true) {
-					Thread.sleep(1000);
-					int temp = buffer.take();
-					System.out.println("CONSUME " + temp);
+					Thread.sleep(500);
+					buffer.add(val);
+					val++;
 				}
 			}
 			catch(InterruptedException e) {}
 		});
-		consumeThread.start();
+		Thread consumeThread = new Thread(()-> {
+			try {
+				while(true) {
+					Thread.sleep(2000);
+					buffer.take();
+				}
+				
+			}
+			catch(InterruptedException e) {}
+		});
 		produceThread.start();
-		consumeThread.join();
-		produceThread.join();
+		consumeThread.start();
+		
 	}
 }
 

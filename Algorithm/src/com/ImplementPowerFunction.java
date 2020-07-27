@@ -40,7 +40,7 @@ public class ImplementPowerFunction {
 		if(n%2 == 0) return myPow(myPow(x, n/2), 2);
 		else return x*myPow( myPow(x, n/2), 2);
 	}*/
-
+	//https://leetcode.com/problems/powx-n/
 	public static double power(double a, int b) {
 		if(b==0) return 1;
 		double temp = power(a, b/2);
@@ -56,7 +56,7 @@ public class ImplementPowerFunction {
 			}
 		}
 	}
-
+	//https://leetcode.com/problems/powx-n/
 	public static void main(String[] args) {
 		System.out.println(Math.pow(-2.3,  -3));
 		System.out.println(ImplementPowerFunction.power(-2.3, -3));

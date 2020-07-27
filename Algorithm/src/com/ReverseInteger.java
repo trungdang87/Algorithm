@@ -10,11 +10,11 @@ public class ReverseInteger {
 		}
 		return output;
 	}*/
-	public static int reverse(int input) {
+	public static int reverse(int n) {
 		int output = 0;
-		while(input != 0) {
-			output = output * 10 + input%10;
-			input /= 10;
+		while(n!=0) {
+			output = output*10 + n%10;
+			n /= 10;
 		}
 		return output;
 	}

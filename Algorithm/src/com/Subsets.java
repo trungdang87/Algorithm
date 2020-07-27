@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-//https://leetcode.com/problems/subsets/submissions/
+//https://leetcode.com/problems/subsets/
 public class Subsets {
 /*	
 	1.Subsets (easy one)

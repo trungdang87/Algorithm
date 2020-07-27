@@ -84,49 +84,49 @@ public class ImplementQueue
 	}*/
 	
 	int[] queue;
-	int front;
-	int rear;
 	int size;
 	int capacity;
-	public ImplementQueue(int capacity) {
+	int front;
+	int rear;
+	ImplementQueue(int capacity){
 		this.capacity = capacity;
 		size = 0;
-		front=0;
+		front = 0;
 		rear = -1;
 		queue = new int[capacity];
-	}
-	public void enqueue(int data) {
-		if(isFull()) {
-			System.out.println("queue is full...");
-			System.exit(1);
-		}
-		System.out.println("ENQUEUE " + data);
-		size++;
-		rear = (rear + 1) % capacity;
-		queue[rear] = data;
-	}
-	public void dequeue() {
-		if(isEmpty()) {
-			System.out.println("queue is empty...");
-			System.exit(1);
-		}
-		System.out.println("DEQUEUE " + queue[front]);
-		front = (front+1) % capacity;
-		size--;
-	}
-	public int peek() {
-		if(isEmpty()) {
-			System.out.println("queue is empty...");
-			System.exit(1);
-		}
-		System.out.println("PEEK " + queue[front]);
-		return queue[front];
 	}
 	public int size() {
 		return size;
 	}
+	public int peek() {
+		if(isEmpty()) {
+			System.out.println("empty...");
+			System.exit(1);
+		}
+		return queue[front];
+	}
 	public boolean isEmpty() {
 		return size==0;
+	}
+	public int dequeue() {
+		if(isEmpty()) {
+			System.out.println("empty...");
+			System.exit(1);
+		}
+		size--;
+		int temp = queue[front];
+		front = (front+1) % capacity;
+		return temp;
+	}
+	public void enqueue(int data) {
+		if(isFull()) {
+			System.out.println("full..");
+			System.exit(1);
+		}
+		size++;
+		rear = (rear+1) % capacity;
+		queue[rear] = data;
+		System.out.println("ENQUEUE " + data);
 	}
 	public boolean isFull() {
 		return size==capacity;

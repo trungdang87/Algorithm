@@ -20,20 +20,17 @@ public class PermutationOfString {
 	
 	//permutation
 	public static void permutation(String s) {
-		permutation("", s);
+		permute("", s);
 	}
-	public static void permutation(String p, String s) {
-		if(s.isEmpty()) {
+	public static void permute(String p, String s) {
+		if(s.length()==0) {
 			System.out.println(p);
 			return;
 		}
-		for(int i=0; i<s.length();i++) {
-			permutation(p + s.charAt(i), s.substring(0,i) + s.substring(i+1));
+		for(int i=0; i<s.length(); i++) {
+			permute(p+s.charAt(i), s.substring(0,i) + s.substring(i+1));
 		}
 	}
-	
-	//check out this problem too
-	//https://leetcode.com/problems/permutation-in-string/
 
 	public static void main(String[] args) {
 		PermutationOfString.permutation("ABC");

@@ -48,40 +48,31 @@ class QNode{
 	QNode next;
 	QNode(int data){
 		this.data = data;
-		next = null;
+		this.next = null;
 	}
 }
 class Queue1{
 	QNode front;
 	QNode rear;
 	int size;
-	
 	public void enqueue(int data) {
+		QNode newNode = new QNode(data);
 		if(front==null) {
-			QNode newNode = new QNode(data);
-			size++;
-			front=newNode;
+			front = newNode;
 			rear = newNode;
-			System.out.println("ENQUEUE " + data);
+			size++;
 			return;
 		}
-		QNode newNode = new QNode(data);
+		size++;
 		rear.next = newNode;
 		rear = newNode;
-		size++;
-		System.out.println("ENQUEUE " + data);
 	}
 	public QNode dequeue() {
-		if(front==null) {
-			System.out.println("QUEUE is empty...");
-			return null;
-		}
-		size--;
+		if(front==null) return null;
 		QNode temp = front;
 		front = front.next;
-		if(front==null) {
-			rear=null;
-		}
+		if(front==null) rear = null;
+		size--;
 		return temp;
 	}
 	public int size() {

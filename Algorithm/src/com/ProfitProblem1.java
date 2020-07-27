@@ -25,22 +25,21 @@ public class ProfitProblem1 {
 	}*/
 
 	public static int[] solution(int[] arr) {
-		int max = 0;
-		int buyDay=0, sellDay=0;
-		int min = 0;
+		int min=0, max=0, buy=0, sell=0;
 		for(int i=1; i<arr.length; i++) {
 			if(arr[min] < arr[i]) {
-				if(arr[i] - arr[min] > max) {
-					buyDay = min;
-					sellDay = i;
-					max = Math.max(arr[i] - arr[min], max);
+				if(arr[i]-arr[min] > max) {
+					buy = min;
+					sell = i;
+					max = arr[i]-arr[min];
 				}
+				
 			}
 			else {
 				min = i;
 			}
 		}
-		return new int[] {buyDay+1, sellDay+1};
+		return new int[] {buy+1, sell+1};
 	}
 
 

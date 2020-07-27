@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//https://leetcode.com/problems/3sum/submissions/
+//https://leetcode.com/problems/3sum/
 public class ThreeSum {
 
 	/*public LinkedList<LinkedList<Integer>> find(int[] input, int target){

@@ -35,8 +35,7 @@ public class FindSecondSmallestInSinglePass {
 				second = i;
 			}
 		}
-		if(second==Integer.MAX_VALUE) System.out.println("no solution");
-		else System.out.println(second);
+		System.out.println(second);
 	}
 	
 	public static void main(String[] args) {

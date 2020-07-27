@@ -77,7 +77,6 @@ public class KillProcess {
 	          11
 	Kill 5 will also kill 10.
 	*/
-	
 	class Node{
 		int val;
 		List<Node> children;
@@ -98,15 +97,16 @@ public class KillProcess {
 		}
 		List<Integer> result = new ArrayList<>();
 		result.add(kill);
-		getChildren(map.get(kill), result);
+		getAllChildren(map.get(kill), result);
 		return result;
 	}
-	public void getChildren(Node killNode, List<Integer> result) {
+	public void getAllChildren(Node killNode, List<Integer> result) {
 		for(Node n : killNode.children) {
 			result.add(n.val);
-			getChildren(n, result);
+			getAllChildren(n, result);
 		}
 	}
+	
     
     public static void main (String[] args) {
     	List<Integer> ppid = new ArrayList();

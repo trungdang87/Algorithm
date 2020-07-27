@@ -1,6 +1,6 @@
 package com;
 
-//https://leetcode.com/problems/min-stack/submissions/
+//https://leetcode.com/problems/min-stack/
 
 
 public class MinStack {

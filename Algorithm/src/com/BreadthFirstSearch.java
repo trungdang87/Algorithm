@@ -79,7 +79,7 @@ public class BreadthFirstSearch{
 	ArrayList<Integer>[] adj;
 	BreadthFirstSearch(int v){
 		this.v = v;
-		adj = new ArrayList[v];
+		this.adj = new ArrayList[v];
 		for(int i=0; i<v; i++) {
 			adj[i] = new ArrayList<>();
 		}
@@ -89,20 +89,21 @@ public class BreadthFirstSearch{
 	}
 	public void bfs(int s) {
 		boolean[] visited = new boolean[this.v];
-		bfsUtil(visited, s);
+		bfsUtil(s, visited);
 	}
-	public void bfsUtil(boolean[] visited, int s) {
+	public void bfsUtil(int s, boolean[] visited) {
 		Queue<Integer> queue = new LinkedList<>();
 		queue.add(s);
+		visited[s] = true;
 		while(!queue.isEmpty()) {
 			s = queue.poll();
-			visited[s] = true;
 			System.out.print(s + " ");
 			Iterator<Integer> i = adj[s].iterator();
 			while(i.hasNext()) {
-				s = i.next();
+				s=i.next();
 				if(!visited[s]) {
 					queue.add(s);
+					visited[s] = true;
 				}
 			}
 		}

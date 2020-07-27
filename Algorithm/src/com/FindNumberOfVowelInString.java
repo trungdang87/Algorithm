@@ -18,15 +18,15 @@ public class FindNumberOfVowelInString {
 	}*/
 	
 	public static void find(String s) {
-		char[] chars = s.toCharArray();
 		int count = 0;
+		char[] chars = s.toCharArray();
 		for(char c : chars) {
 			switch(c) {
-			case 'a':
-			case 'e':
-			case 'i':
-			case 'o':
-			case 'u': count++;
+			case 'a' :
+			case 'e' :
+			case 'i' :
+			case 'o' :
+			case 'u' : count++;
 			}
 		}
 		System.out.println(count);

@@ -20,12 +20,12 @@ public class ProfitProblem {
 		}
 		return profit;
 	}*/
-	
+	//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 	public static int profit(int[] arr) {
-		int min =0;
-		int max=0;
-		for(int i=1; i<arr.length; i++) {
-			if(arr[min] < arr[i]) {
+		int min = 0;
+		int max = 0;
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] > arr[min]) {
 				max = Math.max(arr[i] - arr[min], max);
 			}
 			else {
@@ -34,7 +34,7 @@ public class ProfitProblem {
 		}
 		return max;
 	}
-	
+	//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 	public static void main(String[] args) {
 		int[] dataPrice = new int[] {5,100,3,5};
 		int[] dataPrice1 = new int[] {3,4,7,8};

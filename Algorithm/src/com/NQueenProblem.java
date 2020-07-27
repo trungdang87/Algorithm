@@ -81,21 +81,19 @@ public class NQueenProblem{
 				{0,0,0,0},
 				{0,0,0,0},
 				{0,0,0,0}};
-		solveUQUtil(board, 0);
+		solveNQUtil(board, 0);
 	}
-	public void solveUQUtil(int[][] board, int col) {
+	public void solveNQUtil(int[][] board, int col) {
 		if(col>=N) {
 			printBoard(board);
-			System.out.println("*******************");
 			return;
 		}
-		for(int i = 0; i<N; i++) {
-			if(isSafe(board, i, col)) {
-				board[i][col] = 1;
-				solveUQUtil(board, col+1);
-				
+		for(int r=0; r<N; r++) {
+			if(isSafe(board, r, col)) {
+				board[r][col] = 1;
+				solveNQUtil(board, col+1);
 			}
-			board[i][col] = 0;
+			board[r][col] = 0;
 		}
 	}
 	public boolean isSafe(int[][] board, int row, int col) {
@@ -117,6 +115,7 @@ public class NQueenProblem{
 			}
 			System.out.println();
 		}
+		System.out.println("@@@@@@@@@@@@@@@@@@@@");
 	}
 	public static void main(String[] args) {
 		NQueenProblem ob = new NQueenProblem();

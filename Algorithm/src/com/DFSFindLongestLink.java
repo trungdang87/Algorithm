@@ -26,26 +26,22 @@ public class DFSFindLongestLink {
         }
     }*/
 	public int solution(int[] arr) {
-		int max = 0;
-		int[] count = new int[1];
 		boolean[] visited = new boolean[arr.length];
+		int[] count = new int[1];
+		int max = 0;
 		for(int i=0; i<arr.length; i++) {
-			if(!visited[i]) {
-				count[0] = 0;
-				dfs(arr, i, visited, count);
-				max = Math.max(max, count[0]);
-			}
+			count[0] = 0;
+			dfs(arr, i, visited, count);
+			max = Math.max(max, count[0]);
 		}
 		return max;
 	}
 	public void dfs(int[] arr, int i, boolean[] visited, int[] count) {
-		count[0]++;
+		if(visited[i]) return;
 		visited[i] = true;
-		if(!visited[arr[i]]) {
-			dfs(arr, arr[i], visited, count);
-		}
+		count[0]++;
+		dfs(arr, arr[i], visited, count);
 	}
-
 
 	public static void main(String[] args) {
 

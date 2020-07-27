@@ -68,47 +68,44 @@ public class AllPalindromeOfString {
 
 	//All palindrome of a string find(String s)
 	public static Set<String> find(String s){
+		int left = 0, right = 0;
 		Set<String> result = new HashSet<>();
-		int left = 0, right=0;
-		for(int i = 0; i<s.length(); i++) {
-			//even
+		for(int i=0; i<s.length(); i++) {
+			//even;
 			left = i;
-			right= left+1;
+			right= left + 1;
 			while(left>=0 && right<s.length()) {
-				if(s.charAt(left)==s.charAt(right)) {
-					result.add(s.substring(left, right + 1));
+				if(s.charAt(left) == s.charAt(right)) {
+					result.add(s.substring(left, right+1));
 					left--;
 					right++;
 				}
-				else {
-					break;
-				}
+				else break;
 			}
 			//odd
 			left = i;
 			right = i;
 			while(left>=0 && right<s.length()) {
-				if(s.charAt(left)==s.charAt(right)) {
-					result.add(s.substring(left, right + 1));
+				if(s.charAt(left) == s.charAt(right)) {
+					result.add(s.substring(left, right+1));
 					left--;
 					right++;
 				}
-				else {
-					break;
-				}
+				else break;
 			}
 		}
 		return result;
 	}
 
 	//Maximum palindrome substring max(String s)
+	//https://leetcode.com/problems/longest-palindromic-substring/
 	public static String max(String s) {
-		int left =0, right=0, max=0;
+		int left = 0, right=0, max=0;
 		int start = 0, end = 0;
 		for(int i=0; i<s.length(); i++) {
 			//even
-			left = i;
-			right = left+1;
+			left=i;
+			right=left+1;
 			while(left>=0 && right<s.length()) {
 				if(s.charAt(left)==s.charAt(right)) {
 					if(right - left > max) {
@@ -123,7 +120,7 @@ public class AllPalindromeOfString {
 			}
 			//odd
 			left = i;
-			right = i;
+			right=i;
 			while(left>=0 && right<s.length()) {
 				if(s.charAt(left)==s.charAt(right)) {
 					if(right - left > max) {
@@ -137,7 +134,7 @@ public class AllPalindromeOfString {
 				else break;
 			}
 		}
-		return s.substring(start, end + 1);
+		return s.substring(start, end+1);
 	}
 	
 

@@ -57,12 +57,12 @@ public class Palindrome {
 	
 	//isIt
 	public static boolean isIt(String s) {
-		int l = s.length();
-		if(l%2==0) {
-			int left = l/2 - 1;
-			int right = left + 1;
+		int n = s.length();
+		if(n%2==0) {
+			int left = n/2 - 1;
+			int right = left+1;
 			while(left>=0) {
-				if(s.charAt(left)==s.charAt(right)) {
+				if(s.charAt(left) == s.charAt(right)) {
 					left--;
 					right++;
 				}
@@ -72,10 +72,10 @@ public class Palindrome {
 			}
 		}
 		else {
-			int left = l/2;
+			int left = n/2;
 			int right = left;
 			while(left>=0) {
-				if(s.charAt(left)==s.charAt(right)) {
+				if(s.charAt(left) == s.charAt(right)) {
 					left--;
 					right++;
 				}

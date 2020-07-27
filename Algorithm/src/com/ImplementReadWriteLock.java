@@ -62,11 +62,11 @@ class ReadWriteLock{
 */
 
 class ReadWriteLock{
-	int readers = 0;
 	int writers = 0;
+	int readers = 0;
 	int writeRequests = 0;
 	public synchronized void lockRead() throws InterruptedException{
-		while(writers>0 || writeRequests>0) {
+		while(writers > 0 || writeRequests > 0) {
 			wait();
 		}
 		readers++;

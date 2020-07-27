@@ -42,6 +42,7 @@ public class ClimbingStairs {
         }
         return climb_Stairs(i + 1, n) + climb_Stairs(i + 2, n);
     }*/
+	//climbStairs
 	public static int climbStairs(int n) {
 		return climbStairs(n, 0);
 	}
@@ -69,6 +70,7 @@ public class ClimbingStairs {
     	memo[i] = climbStairsRecursion(n, memo, i+1) + climbStairsRecursion(n, memo, i+2);
     	return memo[i];
     }*/
+	//climbStairsMemo
 	public static int climbStairsMemo(int n) {
 		int[] memo = new int[n+1];
 		return climbStairsMemo(n, 0, memo);
@@ -95,9 +97,9 @@ public class ClimbingStairs {
         }
         return dp[n];
     }*/
-	
+	//climbStairsDynamic
 	public static int climbStairsDynamic(int n) {
-		if(n==1)return 1;
+		if(n==1) return 1;
 		int[] dp = new int[n+1];
 		dp[1] = 1;
 		dp[2] = 2;
@@ -108,9 +110,9 @@ public class ClimbingStairs {
 	}
     
 	public static void main(String[] args) {
-		System.out.println(ClimbingStairs.climbStairs(3)); //3
-		System.out.println(ClimbingStairs.climbStairsMemo(3)); //3
-		System.out.println(ClimbingStairs.climbStairsDynamic(3)); //3
+		System.out.println(ClimbingStairs.climbStairs(5)); //3
+		System.out.println(ClimbingStairs.climbStairsMemo(5)); //3
+		System.out.println(ClimbingStairs.climbStairsDynamic(5)); //3
 	}
 
 }
