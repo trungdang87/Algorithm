@@ -2,13 +2,18 @@ package com;
 
 import java.util.Arrays;
 /*
+https://leetcode.com/problems/add-strings/
+https://leetcode.com/problems/trapping-rain-water/submissions/
+ * 
+ * 
+https://leetcode.com/problems/valid-triangle-number/
 https://leetcode.com/problems/reorganize-string/
 https://leetcode.com/problems/word-pattern/
 WordPattern2.java
 https://leetcode.com/problems/house-robber/
 https://leetcode.com/problems/house-robber-ii
 https://leetcode.com/problems/house-robber-iii
-//rohttps://leetcode.com/problems/partition-labels
+https://leetcode.com/problems/partition-labels
 SubstringSizeKDistintChar.java
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
 https://leetcode.com/problems/subarray-sum-equals-k/
@@ -42,22 +47,19 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list/
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
 https://leetcode.com/problems/permutation-in-string/
 https://leetcode.com/problems/implement-stack-using-queues/
+https://leetcode.com/problems/implement-queue-using-stacks/
 https://leetcode.com/problems/missing-number/
 https://leetcode.com/problems/find-the-difference/
 https://leetcode.com/problems/add-two-numbers-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
-https://leetcode.com/problems/implement-queue-using-stacks/
 https://leetcode.com/problems/rotate-array/
 https://leetcode.com/problems/top-k-frequent-elements/
 https://leetcode.com/problems/surrounded-regions/
 https://leetcode.com/problems/symmetric-tree/
 https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
 https://leetcode.com/problems/maximum-width-of-binary-tree/
-RearrangeCharacters.java
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
-
-//From Amazon Sarah
 https://leetcode.com/problems/word-search/
 https://leetcode.com/problems/word-ladder/
 https://leetcode.com/problems/word-ladder-ii/

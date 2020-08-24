@@ -48,10 +48,10 @@ public class NestedListWeightSum {
 		int sum = 0;
 		for(NestedInteger i : nestedList) {
 			if(i.isInteger()) {
-				sum += i.getInteger() + level;
+				sum += i.getInteger() * level;
 			}
 			else {
-				sum += sum(i.getList(), level + 1);
+				sum += sum(i.getList(), level +1);
 			}
 		}
 		return sum;
@@ -87,21 +87,21 @@ public class NestedListWeightSum {
 	public int sumInverse(List<NestedInteger> nestedList) {
 		List<Integer> list = new ArrayList<>();
 		helper(nestedList, list, 0);
-		int result = 0;
 		int level = list.size();
+		int result = 0;
 		for(Integer i : list) {
-			result += i * level;
+			result += i*level;
 			level--;
 		}
 		return result;
 	}
 	public void helper(List<NestedInteger> nestedList, List<Integer> list, int level) {
-		while(level >= list.size()) {
+		while(level == list.size()) {
 			list.add(0);
 		}
 		for(NestedInteger i : nestedList) {
 			if(i.isInteger()) {
-				list.set(level,  list.get(level) + i.getInteger());
+				list.set(level, list.get(level) + i.getInteger());
 			}
 			else {
 				helper(nestedList, list, level + 1);

@@ -57,31 +57,29 @@ public class Palindrome {
 	
 	//isIt
 	public static boolean isIt(String s) {
-		int n = s.length();
-		if(n%2==0) {
-			int left = n/2 - 1;
+		boolean result = true;
+		if(s==null) return false;
+		if(s.length()==0 || s.length()==1) return true;
+		if(s.length() % 2==0) {
+			int left = s.length()/2 - 1;
 			int right = left+1;
-			while(left>=0) {
-				if(s.charAt(left) == s.charAt(right)) {
-					left--;
-					right++;
-				}
-				else {
-					return false;
-				}
-			}
+			result = check(s, left, right);
 		}
 		else {
-			int left = n/2;
+			int left = s.length()/2;
 			int right = left;
-			while(left>=0) {
-				if(s.charAt(left) == s.charAt(right)) {
-					left--;
-					right++;
-				}
-				else {
-					return false;
-				}
+			result = check(s, left, right);
+		}
+		return result;
+	}
+	public static boolean check(String s, int left, int right) {
+		while(left>=0 && right<s.length()) {
+			if(s.charAt(left)==s.charAt(right)){
+				left--;
+				right++;
+			}
+			else {
+				return false;
 			}
 		}
 		return true;

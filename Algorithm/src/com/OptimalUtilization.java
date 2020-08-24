@@ -34,6 +34,27 @@ public class OptimalUtilization {
         }
         return map.get(Collections.max(allSums));
     }*/
+	
+	
+/*	public List<int[]> solution(List<int[]> a, List<int[]> b, int target){
+		Map<Integer, List<int[]>> map = new HashMap<>();
+		for(int[] i : a) {
+			for(int[] j : b) {
+				int sum = i[1] + j[1];
+				List<int[]> ids = map.getOrDefault(sum, new ArrayList<>());
+				ids.add(new int[] {i[0], j[0]} );
+				map.put(sum, ids);
+			}
+		}
+		List<Integer> result = new ArrayList<>();
+		for(Integer i : map.keySet()) {
+			if(i==target) return map.get(i);
+			else if(i<target) result.add(i);
+		}
+		return map.get(Collections.max(result));
+	}*/
+	
+	
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	//public List<int[]> solution(List<int[]> a, List<int[]> b, int target)

@@ -92,7 +92,7 @@ public class DepthFirstSearch{
 		System.out.print(s + " ");
 		Iterator<Integer> i = adj[s].iterator();
 		while(i.hasNext()) {
-			s=i.next();
+			s = i.next();
 			if(!visited[s]) {
 				dfsUtil(s, visited);
 			}

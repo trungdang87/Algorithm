@@ -47,27 +47,7 @@ public class SumOfIntegersInString {
 	}*/
 	
 	//try both methods (one don't work with negative numbers)
-	public static int solution(String s) {
-		String currentNumber = "";
-		char c = ' ';
-		int result = 0;
-		for(int i=0; i<s.length(); i++) {
-			c = s.charAt(i);
-			if(Character.isDigit(c) || (c=='-' && currentNumber.equals(""))) {
-				currentNumber += c;
-			}
-			else {
-				if(!currentNumber.equals("") && !currentNumber.equals("-")) {
-					result += Integer.valueOf(currentNumber);
-					currentNumber = "";
-				}
-			}
-		}
-		if(!currentNumber.equals("") && !currentNumber.equals("-")) {
-			result += Integer.valueOf(currentNumber);
-		}
-		return result;
-	}
+	
 
 	public static void main(String[] args) {
 		String testStrings[] = { "-a1b-2b3c","1a2b3c", "123ab!45c", "abcdef", "0123.4",

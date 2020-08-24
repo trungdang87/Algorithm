@@ -93,7 +93,6 @@ public class RemoveDuplicateAdvance {
 			set.add(Character.toUpperCase(c));
 		}
 		return sb.toString();
-		
 	}
 
 	public static void main(String[] args) {

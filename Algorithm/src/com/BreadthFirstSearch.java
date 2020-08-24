@@ -94,16 +94,15 @@ public class BreadthFirstSearch{
 	public void bfsUtil(int s, boolean[] visited) {
 		Queue<Integer> queue = new LinkedList<>();
 		queue.add(s);
-		visited[s] = true;
 		while(!queue.isEmpty()) {
 			s = queue.poll();
 			System.out.print(s + " ");
+			visited[s] = true;
 			Iterator<Integer> i = adj[s].iterator();
 			while(i.hasNext()) {
-				s=i.next();
+				s = i.next();
 				if(!visited[s]) {
 					queue.add(s);
-					visited[s] = true;
 				}
 			}
 		}

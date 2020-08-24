@@ -19,12 +19,12 @@ public class BinarySearchRecursive {
 		return -1;
 	}*/
 	
-	public static int binarySearchRecursive(int[] arr, int l, int r, int x) {
-		if(l<=r) {
-			int m = (l+r)/2;
-			if(arr[m]==x) return m;
-			if(x < arr[m]) return binarySearchRecursive(arr, l, m - 1, x);
-			return binarySearchRecursive(arr, m+1, r, x);
+	public static int binarySearchRecursive(int[] arr, int left, int right, int x) {
+		if(left<=right) {
+			int mid = (left+right)/2;
+			if(arr[mid]==x) return mid;
+			if(arr[mid] < x) return binarySearchRecursive(arr, mid + 1, right, x);
+			else return binarySearchRecursive(arr, left, mid-1, x);
 		}
 		return -1;
 	}

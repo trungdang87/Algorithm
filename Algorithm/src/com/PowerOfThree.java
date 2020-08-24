@@ -32,9 +32,9 @@ public class PowerOfThree {
 	public static boolean isIt(int n) {
 		//n = 3^i;
 		//i = log3(n);
-		//i = log10(n) / log10(3);
+		//i = log10(n)/log10(3);
 		double i = Math.log10(n) / Math.log10(3);
-		return i%1==0;
+		return i%1 == 0;
 	}
 	
 	public static void main(String[] args) {

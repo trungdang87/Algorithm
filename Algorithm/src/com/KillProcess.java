@@ -82,7 +82,7 @@ public class KillProcess {
 		List<Node> children;
 		Node(int val){
 			this.val = val;
-			this.children = new ArrayList<>();
+			children = new ArrayList<>();
 		}
 	}
 	public List<Integer> killProcess(List<Integer> ppid, List<Integer> pid, int kill){
@@ -90,20 +90,20 @@ public class KillProcess {
 		for(Integer i : pid) {
 			map.put(i, new Node(i));
 		}
-		map.put(0, new Node(0));
+		map.put(0,  new Node (0));
 		for(int i=0; i<ppid.size(); i++) {
 			Node parent = map.get(ppid.get(i));
 			parent.children.add(map.get(pid.get(i)));
 		}
 		List<Integer> result = new ArrayList<>();
 		result.add(kill);
-		getAllChildren(map.get(kill), result);
+		getChildren(map.get(kill), result);
 		return result;
 	}
-	public void getAllChildren(Node killNode, List<Integer> result) {
+	public void getChildren(Node killNode, List<Integer> result) {
 		for(Node n : killNode.children) {
 			result.add(n.val);
-			getAllChildren(n, result);
+			getChildren(n, result);
 		}
 	}
 	

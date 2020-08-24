@@ -78,6 +78,8 @@ package com;
 //https://www.baeldung.com/spring-interview-questions
 //https://www.greycampus.com/blog/programming/top-spring-interview-questions-and-answers
 
+//Function (functional interface)
+//http://tutorials.jenkov.com/java-functional-programming/functional-composition.html#compose
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ FRONT END @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/

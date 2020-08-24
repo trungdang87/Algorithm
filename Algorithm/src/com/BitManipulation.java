@@ -139,9 +139,9 @@ public class BitManipulation{
 			}
 			else {
 				max = Math.max(max,  count);
-				count = 0;
+				count=0;
 			}
-			n >>= 1;
+			n = n >> 1;
 		}
 		return max;
 	}

@@ -139,9 +139,10 @@ class Node{
 	
 	//reverseIterator
 	public static Node reverseIterator(Node head) {
-		if(head==null || head.next==null);
+		if(head==null || head.next==null) return head;
+		Node pre = null;
+		Node cur = head;
 		Node next = null;
-		Node cur = head, pre = null;
 		while(cur!=null) {
 			next = cur.next;
 			cur.next = pre;
@@ -165,8 +166,7 @@ class Node{
 	//middleOfLinkedList
 	public static Node middleOfLinkedList(Node head) {
 		if(head==null || head.next==null) return head;
-		Node fast = head;
-		Node slow = head;
+		Node slow = head, fast = head;
 		while(fast!=null && fast.next!=null) {
 			slow = slow.next;
 			fast = fast.next.next;

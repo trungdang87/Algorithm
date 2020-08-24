@@ -38,6 +38,7 @@ public class FindTheNumberOfIslands {
 	public int[] count(int[][] matrix) {
 		int[] result = new int[2];
 		int[] count = new int[1];
+		int max = 0;
 		boolean[][] visited = new boolean[matrix.length][matrix[0].length];
 		for(int i=0; i<matrix.length; i++) {
 			for(int j=0; j<matrix[0].length; j++) {
@@ -45,24 +46,24 @@ public class FindTheNumberOfIslands {
 					count[0] = 0;
 					result[0]++;
 					dfs(matrix, i, j, visited, count);
-					result[1] = Math.max(result[1],  count[0]);
+					result[1] = Math.max(count[0], result[1]);
 				}
 			}
 		}
 		return result;
 	}
-	public void dfs(int[][] matrix, int i, int j, boolean[][] visited, int[] count) {
-		if(isSafe(matrix, i, j, visited)) {
-			visited[i][j] = true;
+	public void dfs(int[][] matrix, int r, int c, boolean[][] visited, int[] count) {
+		if(isSafe(matrix, r, c, visited)) {
+			visited[r][c] = true;
 			count[0]++;
-			dfs(matrix, i-1, j, visited, count);
-			dfs(matrix, i+1, j, visited, count);
-			dfs(matrix, i, j-1, visited, count);
-			dfs(matrix, i, j+1, visited, count);
+			dfs(matrix, r-1, c, visited, count);
+			dfs(matrix, r+1, c, visited, count);
+			dfs(matrix, r, c-1, visited, count);
+			dfs(matrix, r, c+1, visited, count);
 		}
 	}
-	public boolean isSafe(int[][] matrix, int i, int j, boolean[][] visited) {
-		return i>=0 && i<matrix.length && j>=0 && j<matrix[0].length && matrix[i][j]==1 && !visited[i][j];
+	public boolean isSafe(int[][] matrix, int r, int c, boolean[][] visited) {
+		return r>=0 && r<matrix.length && c>=0 && c<matrix[0].length && !visited[r][c] && matrix[r][c]==1;
 	}
 	
 	

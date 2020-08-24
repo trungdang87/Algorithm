@@ -16,7 +16,7 @@ public class Flowerbed {
 		}
 		return false;
 	}*/
-	//https://leetcode.com/problems/can-place-flowers/solution/
+	//https://leetcode.com/problems/can-place-flowers/
 	public static boolean canPlaceFlowers(int[] arr, int n) {
 		int count = 0;
 		for(int i=0; i<arr.length; i++) {
@@ -29,7 +29,7 @@ public class Flowerbed {
 		return false;
 	}
 	
-	////https://leetcode.com/problems/can-place-flowers/solution/
+	////https://leetcode.com/problems/can-place-flowers/
 	public static void main(String[] args) {
 		System.out.println(Flowerbed.canPlaceFlowers(new int[] {0,1,0,1,0,1,0,0}, 1));//true
 		System.out.println(Flowerbed.canPlaceFlowers(new int[] {1,0,0,0,1}, 1));//true

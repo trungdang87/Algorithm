@@ -20,15 +20,16 @@ public class PermutationOfString {
 	
 	//permutation
 	public static void permutation(String s) {
-		permute("", s);
+		if(s==null) return;
+		 permute("", s);
 	}
-	public static void permute(String p, String s) {
-		if(s.length()==0) {
-			System.out.println(p);
+	public static void permute(String perm, String s) {
+		if(s.isEmpty()) {
+			System.out.println(perm);
 			return;
 		}
 		for(int i=0; i<s.length(); i++) {
-			permute(p+s.charAt(i), s.substring(0,i) + s.substring(i+1));
+			permute(perm + s.charAt(i), s.substring(0,i) + s.substring(i+1));
 		}
 	}
 

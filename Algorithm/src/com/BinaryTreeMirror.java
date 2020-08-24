@@ -92,7 +92,9 @@ public class BinaryTreeMirror
 	}*/ // printAncestors(Node3 node, int target)  
 	public boolean printAncestors(Node3 root, int target) {
 		if(root==null) return false;
-		if(root.data==target) return true;
+		if(root.data == target) {
+			return true;
+		}
 		if(printAncestors(root.left, target) || printAncestors(root.right, target)) {
 			System.out.print(root.data + " ");
 			return true;
@@ -160,7 +162,7 @@ public class BinaryTreeMirror
 	//insertLevelOrder
 	public Node3 insertLevelOrder(Node3 root, int key) {
 		if(root==null) {
-			root=new Node3(key);
+			root = new Node3(key);
 			return root;
 		}
 		Queue<Node3> queue = new LinkedList<>();
@@ -168,13 +170,15 @@ public class BinaryTreeMirror
 		while(!queue.isEmpty()) {
 			Node3 node = queue.poll();
 			if(node.left==null) {
-				node.left = new Node3(key); break;
+				node.left = new Node3(key);
+				break;
 			}
-			if(node.right==null) {
-				node.right = new Node3(key); break;
+			if(node.right == null) {
+				node.right = new Node3(key);
+				break;
 			}
-			queue.add(node.left);
-			queue.add(node.right);
+			queue.add(root.left);
+			queue.add(root.right);
 		}
 		return root;
 	}
@@ -208,14 +212,17 @@ public class BinaryTreeMirror
 	public void insertBST(Node3 root, int key) {
 		this.root = insertBSTUtil(root, key);
 	}
-	public Node3  insertBSTUtil(Node3 root, int key) {
+	public Node3 insertBSTUtil(Node3 root, int key) {
 		if(root==null) {
 			root = new Node3(key);
 			return root;
 		}
-		if(key<root.data)
-		root.left = insertBSTUtil(root.left, key);
-		else if(key > root.data) root.right = insertBSTUtil(root.right, key);
+		if(key<root.data) {
+			root.left = insertBSTUtil(root.left, key);
+		}
+		else if(key > root.data) {
+			root.right = insertBSTUtil(root.right, key);
+		}
 		return root;
 	}
 
@@ -344,8 +351,9 @@ public class BinaryTreeMirror
 			printGivenLevel(root.right, level-1); 
 		} 
 	} */
-	//printLevelOrder()
+	//printLevelOrder(Node3 root)
 	public void printLevelOrder(Node3 root) {
+		if(root==null) return;
 		int height = height(root);
 		for(int i=1; i<=height; i++) {
 			printLevelOrder(root, i);
@@ -360,7 +368,7 @@ public class BinaryTreeMirror
 		}
 		if(level > 1) {
 			printLevelOrder(root.left, level - 1);
-			printLevelOrder(root.right, level -1);
+			printLevelOrder(root.right, level - 1);
 		}
 	}
 	public int height(Node3 root) {
@@ -435,11 +443,10 @@ public class BinaryTreeMirror
     }*/ //longestConsecutive
 	int result = 1;
 	public int longestConsecutive(Node3 root) {
-		if(root==null) return 0;
-		longestConsecutive(root, 0, root.data);
+		helper(root, 0, root.data);
 		return result;
 	}
-	public void longestConsecutive(Node3 root, int curConsecutive, int target) {
+	public void helper(Node3 root, int curConsecutive, int target) {
 		if(root==null) return;
 		if(root.data==target) {
 			curConsecutive++;
@@ -447,9 +454,9 @@ public class BinaryTreeMirror
 		else {
 			curConsecutive=1;
 		}
-		result = Math.max(result, curConsecutive);
-		longestConsecutive(root.left, curConsecutive, root.data + 1);
-		longestConsecutive(root.right, curConsecutive, root.data + 1);
+		result = Math.max(curConsecutive, result);
+		helper(root.left, curConsecutive, root.data + 1);
+		helper(root.right, curConsecutive, root.data + 1);
 	}
 	
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -487,9 +494,10 @@ public class BinaryTreeMirror
 	    }  
 	}  */ //antiClockWiseSpiral 5 1 4 6 8 7 2 
 	public void antiClockWiseSpiral(Node3 root) {
-		int j = height(root);
+		if(root==null) return;
+		int depth = depth(root);
+		int i=1, j=depth;
 		int flag = 0;
-		int i = 1;
 		while(i<=j) {
 			if(flag==0) {
 				printRightToLeft(root, i);
@@ -502,11 +510,13 @@ public class BinaryTreeMirror
 				flag = 0;
 			}
 		}
+		
 	}
 	public void printLeftToRight(Node3 root, int level) {
 		if(root==null) return;
-		if(level == 1) {
+		if(level==1) {
 			System.out.print(root.data + " ");
+			return;
 		}
 		if(level > 1) {
 			printLeftToRight(root.left, level - 1);
@@ -517,13 +527,19 @@ public class BinaryTreeMirror
 		if(root==null) return;
 		if(level==1) {
 			System.out.print(root.data + " ");
+			return;
 		}
-		if(level>1) {
+		if(level > 1) {
 			printRightToLeft(root.right, level - 1);
 			printRightToLeft(root.left, level - 1);
 		}
 	}
-	
+	public int depth(Node3 root) {
+		if(root==null) return 0;
+		int left = depth(root.left);
+		int right = depth(root.right);
+		return Math.max(left, right) + 1;
+	}
 	
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	
@@ -549,28 +565,35 @@ public class BinaryTreeMirror
 	    if(root.data < n.data) return 1 + getDistance(root.right, n);
 	    return 1 + getDistance(root.left, n);
 	}*/
+	//public int distance(Node3 root, int node1, int node2)
 	public int distance(Node3 root, int node1, int node2) {
-		Node3 lca = lca(root, node1, node2);
-		Node3 n1 = search(root, node1);
-		Node3 n2 = search(root, node2);
+		if(root==null) return -1;
+		Node3 n1 = searchNode(root, node1);
+		Node3 n2 = searchNode(root, node2);
+		if(n1==null || n2==null) return -1;
+		Node3 lca = lca(root, n1, n2);
 		return getDistance(lca, n1) + getDistance(lca, n2);
+		
 	}
 	public int getDistance(Node3 lca, Node3 n) {
-		if(lca==null || lca==n) return 0;
+		if(lca==null) return 0;
+		if(lca == n) return 0;
 		if(n.data < lca.data) return getDistance(lca.left, n) + 1;
-		return getDistance(lca.right, n) + 1;
+		else if(n.data > lca.data) return getDistance(lca.right, n) + 1;
+		return 0;
 	}
-	public Node3 search(Node3 root, int n) {
-		if(root==null || root.data==n) return root;
-		if(n<root.data) return search(root.left, n);
-		else if(n>root.data) return search(root.right, n);
-		return root;
-	}
-	public Node3 lca(Node3 root, int node1, int node2) {
+	public Node3 lca(Node3 root, Node3 n1, Node3 n2) {
 		if(root==null) return root;
-		if(node1 < root.data && node2 < root.data) return lca(root.left, node1, node2);
-		else if(node1> root.data && node1>root.data) return lca(root.right, node1, node2);
+		if(n1.data < root.data && n2.data < root.data) return lca(root.left, n1, n2);
+		else if(n1.data > root.data && n2.data > root.data) return lca(root.right, n1, n2);
 		else return root;
+	}
+	public Node3 searchNode(Node3 root, int val) {
+		if(root==null) return null;
+		if(root.data == val) return root;
+		if(val < root.data) return searchNode(root.left, val);
+		else if(val > root.data) return searchNode(root.right, val);
+		return null;
 	}
 	
 

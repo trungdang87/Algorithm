@@ -32,7 +32,7 @@ public class QuickSort {
 		return i + 1;
 	}*/
 	
-	public static void quickSort(int[]arr, int l, int r) {
+	public static void quickSort(int[] arr, int l, int r) {
 		if(l<r) {
 			int pivot = partition(arr, l, r);
 			quickSort(arr, l, pivot - 1);
@@ -54,6 +54,7 @@ public class QuickSort {
 		int temp = arr[r];
 		arr[r] = arr[j];
 		arr[j] = temp;
+		
 		return j;
 	}
 	

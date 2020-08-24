@@ -21,12 +21,12 @@ public class BinarySearchIteration {
 		return -1;
 	}*/
 
-	public static int search(int[] arr, int l, int r, int x) {
-		while(l<=r) {
-			int m = (l+r)/2;
-			if(arr[m] == x) return m;
-			if(x > arr[m]) l = m+1;
-			else r = m-1;
+	public static int search(int[] arr, int left, int right, int x) {
+		while(left<=right) {
+			int mid = (left+right)/2;
+			if(arr[mid]==x) return mid;
+			if(arr[mid]<x) left = mid + 1;
+			else right = mid - 1;
 		}
 		return -1;
 	}

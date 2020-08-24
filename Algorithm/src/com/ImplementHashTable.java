@@ -172,34 +172,63 @@ class HashNode<K,V>{
 	HashNode(K key, V value){
 		this.key = key;
 		this.value = value;
-		next = null;
+		this.next = null;
 	}
 }
-
 class MyMap<K,V>{
-	ArrayList<HashNode<K,V>> bucketArray;
 	int size;
 	int capacity;
+	ArrayList<HashNode<K,V>> bucketArray;
 	MyMap(){
-		this.size =0;
+		this.size = 0;
 		this.capacity = 2;
 		bucketArray = new ArrayList<>();
 		for(int i=0; i<capacity; i++) {
 			bucketArray.add(null);
 		}
 	}
-	public int size() {
-		return this.size;
+	public int bucketIndex(K key) {
+		int hashCode = key.hashCode();
+		int index = hashCode % capacity;
+		return index;
 	}
-	public boolean isEmpty() {
-		return size==0;
+	public void put(K key, V value) {
+		int bucketIndex = bucketIndex(key);
+		HashNode<K,V> head = bucketArray.get(bucketIndex);
+		while(head!=null) {
+			if(head.key.equals(key)) {
+				head.value = value;
+				return;
+			}
+			head = head.next;
+		}
+		head = bucketArray.get(bucketIndex);
+		size++;
+		HashNode<K,V> newNode = new HashNode<K,V>(key, value);
+		newNode.next = head;
+		bucketArray.set(bucketIndex, newNode);
+		if(size*1.0 / capacity > 0.7) {
+			ArrayList<HashNode<K,V>> temp = bucketArray;
+			size=0;
+			capacity= capacity * 2;
+			bucketArray = new ArrayList<>();
+			for(int i=0; i<capacity; i++) {
+				bucketArray.add(null);
+			}
+			for(HashNode<K,V> h : temp) {
+				while(h!=null) {
+					put(h.key, h.value);
+					h = h.next;
+				}
+			}
+		}
 	}
 	public V remove(K key) {
 		int bucketIndex = bucketIndex(key);
 		HashNode<K,V> head = bucketArray.get(bucketIndex);
 		if(head!=null && head.key.equals(key)) {
-			size--;
 			V temp = head.value;
+			size--;
 			bucketArray.set(bucketIndex, head.next);
 			return temp;
 		}
@@ -225,41 +254,12 @@ class MyMap<K,V>{
 		}
 		return null;
 	}
-	public int bucketIndex(K key) {
-		int hashCode = key.hashCode();
-		int bucketIndex = hashCode % capacity;
-		return bucketIndex;
+	
+	public int size() {
+		return this.size;
 	}
-	public void put(K key, V value) {
-		int bucketIndex = bucketIndex(key);
-		HashNode<K,V> head = bucketArray.get(bucketIndex);
-		while(head!=null) {
-			if(head.key.equals(key)) {
-				head.value = value;
-				return;
-			}
-			head = head.next;
-		}
-		size++;
-		head = bucketArray.get(bucketIndex);
-		HashNode<K,V> newNode = new HashNode<K,V>(key, value);
-		newNode.next = head;
-		bucketArray.set(bucketIndex, newNode);
-		if(1.0*size / capacity > 0.7) {
-			ArrayList<HashNode<K,V>> temp = bucketArray;
-			size = 0;
-			capacity = capacity * 2;
-			bucketArray = new ArrayList<>();
-			for(int i=0; i<capacity; i++) {
-				bucketArray.add(null);
-			}
-			for(HashNode<K,V> h : temp) {
-				while(h!=null) {
-					put(h.key, h.value);
-					h=h.next;
-				}
-			}
-		}
+	public boolean isEmpty() {
+		return this.size==0;
 	}
 }
 

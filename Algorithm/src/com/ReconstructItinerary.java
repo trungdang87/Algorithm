@@ -39,39 +39,38 @@ public class ReconstructItinerary {
 		res.add(string);
 	}*/
 	
-	public List<String> findItinerary(List<List<String>> list, String from){
-		Map<String, List<String>> map = new HashMap();
-		for(List<String> i : list) {
-			if(map.containsKey(i.get(0))) {
-				map.get(i.get(0)).add(i.get(1));
-			}
-			else {
-				List<String> destination = new ArrayList();
-				destination.add(i.get(1));
-				map.put(i.get(0), destination);
-			}
-		}
-		for(List<String> i : map.values()) {
-			Collections.sort(i);
-		}
-		List<String> result = new ArrayList();
-		dfs(map, from, result);
-		Collections.reverse(result);
-		return result;
+	public List<String> findItinerary(List<List<String>> tickets){
+		return findItinerary(tickets, "JFK");
 	}
-	public void dfs(Map<String, List<String>> map, String from, List<String> result) {
-		if(map.get(from)==null) {
-			result.add(from);
-			return;
+	public List<String> findItinerary(List<List<String>> tickets, String from){
+		Map<String, List<String>> map = new HashMap<>();
+		for(List<String> l : tickets) {
+			List<String> destinations = map.getOrDefault(l.get(0), new ArrayList<>());
+			destinations.add(l.get(1));
+			map.put(l.get(0), destinations);
 		}
-		Iterator<String> i = map.get(from).iterator();
-		while(i.hasNext()) {
-			String destination = i.next();
-			i.remove();
-			dfs(map, destination, result);
-		}
-		result.add(from);
+        for(List<String> l : map.values()){
+            Collections.sort(l);
+        }
+		List<String> result = new ArrayList<>();
+		dfs(map, result, from);
+        Collections.reverse(result);
+        return result;
 	}
+    public void dfs(Map<String, List<String>> map, List<String> result, String from){
+        if(map.get(from)==null){
+            result.add(from);
+            return;
+        }
+        Iterator<String> i = map.get(from).iterator();
+        while(i.hasNext()){
+            String destination = i.next();
+            i.remove();
+            dfs(map, result, destination);
+        }
+        result.add(from);
+    }
+    
 	
 	
 	public static void main(String[] args) {

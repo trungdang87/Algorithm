@@ -23,7 +23,7 @@ public class TowerOfHanoiRecursive {
 		}
 		tower(x - 1, from, aux, to);
 		System.out.println("Move disk " + x + " from " + from + " to " + to);
-		tower(x - 1, aux, to, from);
+		tower(x-1, aux, to, from);
 	}
 	
 	public static void main(String[] args) {

@@ -29,11 +29,11 @@ public class KClosestPointToOrigin {
 
 	}*/
 	
-	public static int[][] kClosest(int[][] points, int k){
+	public static  int[][] kClosest(int[][] points, int k){
 		Map<int[], Integer> map = new HashMap<>();
 		for(int[] i : points) {
-			int distance = i[0]*i[0] +i[1]*i[1];
-			map.put(i,  distance);
+			int distance = i[0]*i[0] + i[1]*i[1];
+			map.put(i, distance);
 		}
 		PriorityQueue<Map.Entry<int[], Integer>> pq = new PriorityQueue<>((a,b)->a.getValue() - b.getValue());
 		pq.addAll(map.entrySet());

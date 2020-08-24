@@ -68,25 +68,23 @@ public class AllPalindromeOfString {
 
 	//All palindrome of a string find(String s)
 	public static Set<String> find(String s){
-		int left = 0, right = 0;
 		Set<String> result = new HashSet<>();
+		int left=0, right = 0;
 		for(int i=0; i<s.length(); i++) {
-			//even;
-			left = i;
-			right= left + 1;
+			//odd
+			left=i; right=i;
 			while(left>=0 && right<s.length()) {
-				if(s.charAt(left) == s.charAt(right)) {
+				if(s.charAt(left)==s.charAt(right)) {
 					result.add(s.substring(left, right+1));
 					left--;
 					right++;
 				}
 				else break;
 			}
-			//odd
-			left = i;
-			right = i;
+			//even
+			left=i; right=i+1;
 			while(left>=0 && right<s.length()) {
-				if(s.charAt(left) == s.charAt(right)) {
+				if(s.charAt(left)==s.charAt(right)) {
 					result.add(s.substring(left, right+1));
 					left--;
 					right++;

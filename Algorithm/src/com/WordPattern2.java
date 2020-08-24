@@ -40,33 +40,30 @@ public class WordPattern2 {
 	    return false;
 	}*/
 	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	public boolean wordPatternMatch(String pattern, String s) {
+	public boolean wordPatternMatch(String pattern, String string) {
 		Map<Character, String> map = new HashMap<>();
 		Set<String> set = new HashSet<>();
-		return helper(pattern, s, map, set, 0, 0);
+		return helper(pattern, string, map, set, 0, 0);
 	}
-	public boolean helper(String pattern, String s, Map<Character, String> map, Set<String> set, int i, int j) {
-		if(i==pattern.length() && j==s.length()) return true;
-		if(i>=pattern.length() || j>=s.length()) return false;
+	public boolean helper(String pattern, String string, Map<Character, String> map, Set<String> set, int i, int j) {
+		if(i==pattern.length() && j==string.length()) return true;
+		if(i==pattern.length() || j==string.length()) return false;
 		char c = pattern.charAt(i);
-		for(int k=j+1; k<=s.length(); k++) {
-			String substring = s.substring(j, k);
+		for(int k=j+1; k<string.length(); k++) {
+			String substring = string.substring(j, k);
 			if(!map.containsKey(c) && !set.contains(substring)) {
-				map.put(c,  substring);
+				map.put(c, substring);
 				set.add(substring);
-				if(helper(pattern, s, map, set, i+1, k)) return true;
-				map.remove(c);
+				if(helper(pattern, string, map, set, i+1, k)) return true;
+				map.remove(c, substring);
 				set.remove(substring);
-				
 			}
 			else if(map.containsKey(c) && map.get(c).equals(substring)) {
-				if(helper(pattern, s, map, set, i+1, k)) return true;
+				if(helper(pattern, string, map, set, i+1, k)) return true;
 			}
-			
 		}
 		return false;
 	}
-	
 	
 	
 	

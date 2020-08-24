@@ -12,7 +12,7 @@ Java Solution
 This is a dp problem. The key is to find the relation which is dp[i] = min(dp[i], dp[i-square]+1). For example, dp[5]=dp[4]+1=1+1=2.
  */
 
-//https://leetcode.com/problems/perfect-squares/submissions/
+//https://leetcode.com/problems/perfect-squares/
 public class PerfectSquare {
 	/*	
 	public static int numSquares(int n) {

@@ -97,20 +97,19 @@ public class HowManyXMySolution {
 	}*/
 	// find 1048365 -> LcR -> L=104, c=8 and R=365
 	public static int find(int limit, int x) {
-		int left=0, right=0, r=0, l=0, ithValue=0;
-		int i=1;
-		int digits = (int) Math.log10(limit) + 1;
+		int left=0, right=0, l = 0, r=0, ithvalue=0;
+		int i=1,  digits = (int) Math.log10(limit) + 1;
 		int result = 0;
 		while(i<=digits) {
 			l = (int)Math.pow(10, i);
-			r = (int)Math.pow(10,  i - 1);
+			r = (int)Math.pow(10, i-1);
 			left = limit / l;
 			right = limit % r;
-			ithValue = limit % l / r;
+			ithvalue = limit % l / r;
 			if(x==0) result += left * r;
-			if(x>0 && x<ithValue) result += (left+1) * r;
-			if(x==ithValue) result += left * r + right + 1;
-			if(x>ithValue) result += left * r;
+			if(x>0 && x<ithvalue) result += (left+1) * r;
+			if(x==ithvalue) result += left * r + right + 1;
+			if(x>ithvalue) result += left * r;
 			i++;
 		}
 		return result;

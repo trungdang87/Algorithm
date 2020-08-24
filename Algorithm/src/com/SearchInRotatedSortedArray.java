@@ -27,7 +27,7 @@ public class SearchInRotatedSortedArray {
         }
         return searcher(a, left, right,target);
     }*/
-	//https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
+	//https://leetcode.com/problems/search-in-rotated-sorted-array/
 	public static int search(int[] arr, int n) {
 		return search(arr, 0, arr.length-1, n);
 	}
@@ -53,7 +53,7 @@ public class SearchInRotatedSortedArray {
 			return search(arr,l,r,n);
 		}
 	}
-	//https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/
+	//https://leetcode.com/problems/search-in-rotated-sorted-array/
 	public static void main(String[] args) {
 		System.out.println(SearchInRotatedSortedArray.search(new int[] {4,5,6,7,0,1,2}, 0));//4
 		System.out.println(SearchInRotatedSortedArray.search(new int[] {4,5,6,7,0,1,2}, 3));//-1
